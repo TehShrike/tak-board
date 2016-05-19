@@ -1,0 +1,24 @@
+{{#boardState}}
+<div class="display-table tak-board width-height-100 size-{{size}}">
+	{{#y:i}}
+	<div class="display-table-row tak-row {{i % 2 ? 'even' : 'odd'}}">
+		{{# .:j}}
+		<div class="display-table-cell tak-square {{topIsStanding ? 'standing' : ''}} {{j % 2 ? 'even' : 'odd'}}">
+			<div class="width-height-100 display-table">
+				<div class="square-empty-space"></div>
+				<div class="display-table-footer-group square-pieces">
+					{{#pieces.slice().reverse():stackPosition}}
+					{{# {piece:.} }}
+					<div class="tak-piece owned-by-{{piece.toLowerCase()}}">
+						{{piece}}
+					</div>
+					{{/}}
+					{{/}}
+				</div>
+			</div>
+		</div>
+		{{/}}
+	</div>
+	{{/}}
+</div>
+{{/}}

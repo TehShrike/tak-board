@@ -1,5 +1,5 @@
 const Ractive = require('ractive')
-const board = require('./board.html')
+const board = require('./board-1.html')
 const p = require('tak-game/parse-position')
 
 const boardState = p(`
@@ -10,7 +10,7 @@ const boardState = p(`
 `)
 
 const ractive = new Ractive({
-	el: '#board',
+	el: '#board-1',
 	template: board,
 	data: {
 		boardState

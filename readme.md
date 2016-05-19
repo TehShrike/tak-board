@@ -33,7 +33,8 @@ You'll need [node.js](https://nodejs.org/en/download/) installed.
 ```sh
 git clone https://github.com/TehShrike/tak-board.git
 npm install
-npm run watch
+npm run watchjs
+npm run watchcss # in another tab
 ```
 
 Open up index.html in your browser to see how it looks.
