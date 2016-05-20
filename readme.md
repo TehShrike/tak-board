@@ -42,3 +42,10 @@ Open up index.html in your browser to see how it looks.
 Edit [board.html](https://github.com/TehShrike/tak-board/blob/gh-pages/board.html) and [board-style.css](https://github.com/TehShrike/tak-board/blob/gh-pages/board-style.css) to change the design.  The mustache-style templating is rendered by [Ractive](http://docs.ractivejs.org/latest/mustaches).
 
 If you want to try a different board, edit the board state at the top of index.js.
+
+## Todo
+
+- plop in more than one view of the same board state, with different template/css files for each
+- to try: left half stack, right half top-piece
+- to try: stack, with top piece in the center
+- to try: stack, with top piece in border and standing stone/capstone in center
