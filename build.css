@@ -52,17 +52,17 @@ SILVER #DDDDDD
 }
 
 .tak-board-1 .tak-piece.owned-by-o {
-	background-color: #0074D9;
+	background-color: #FF851B;
 }
 
 .tak-board-1 .tak-piece.owned-by-x {
-	background-color: #01FF70;
+	background-color: #001F3F;
 }
 
 /* piece sizes */
 
 .tak-board-1 .tak-piece {
-	height: 15%;
+	height: 20%;
 	margin: 1px;
 }
 
@@ -96,4 +96,58 @@ SILVER #DDDDDD
 .tak-board-1 .tak-board.size-3 .tak-square {
 	width: 33.333333333%;
 	height: 33.333333333%;
+}
+
+.tak-board-1 .piece-topper {
+	position: absolute;
+	width: calc(100% - (25% * 2));
+	height: calc(100% - (25% * 2));
+}
+
+.tak-board-1 .piece-topper-border {
+	position: absolute;
+	width: calc(100% - (25% * 2) + (2px * 2));
+	height: calc(100% - (25% * 2) + (2px * 2));
+}
+
+.tak-board-1 .piece-topper.owned-by-o {
+	border-color: #FF851B;
+}
+
+.tak-board-1 .piece-topper.owned-by-x {
+	border-color: #001F3F;
+}
+
+.tak-board-1 .circle {
+	border-radius: 50%;
+	border: 10px solid;
+	left: 25%;
+	top: 25%;
+	margin-top: -10px;
+	margin-left: -10px;
+}
+
+.tak-board-1 .circle-border {
+	border-radius: 50%;
+	border: calc(10px + 2px) solid white;
+	left: calc(25% - 2px);
+	top: calc(25% - 2px);
+	margin-top: calc(-10px - 2px);
+	margin-left: calc(-10px - 2px);
+}
+
+.tak-board-1 .square {
+	border: 10px solid;
+	left: 25%;
+	top: 25%;
+	margin-top: -10px;
+	margin-left: -10px;
+}
+
+.tak-board-1 .square-border {
+	border: calc(10px + 2px) solid white;
+	left: calc(25% - 2px);
+	top: calc(25% - 2px);
+	margin-top: calc(-10px - 2px);
+	margin-left: calc(-10px - 2px);
 }

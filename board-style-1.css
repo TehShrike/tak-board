@@ -21,6 +21,9 @@ SILVER #DDDDDD
 .tak-board-1 {
 
 
+	$x-color: #001F3F;
+	$o-color: #FF851B;
+	$negative-space-color: white;
 
 	.square-pieces {
 		height: 1px;
@@ -39,15 +42,15 @@ SILVER #DDDDDD
 	}
 
 	.tak-piece.owned-by-o {
-		background-color: #0074D9;
+		background-color: $o-color;
 	}
 	.tak-piece.owned-by-x {
-		background-color: #01FF70;
+		background-color: $x-color;
 	}
 
 	/* piece sizes */
 	.tak-piece {
-		height: 15%;
+		height: 20%;
 		margin: 1px;
 	}
 
@@ -80,5 +83,59 @@ SILVER #DDDDDD
 		height: 33.333333333%;
 	}
 
+	$squarePaddingToTopPiece: 25%;
+	$pieceEdgeThickness: 10px;
+	$pieceEdgeBorder: 2px;
 
+	.piece-topper {
+		position: absolute;
+		width: calc(100% - ($squarePaddingToTopPiece * 2));
+		height: calc(100% - ($squarePaddingToTopPiece * 2));
+	}
+	.piece-topper-border {
+		position: absolute;
+		width: calc(100% - ($squarePaddingToTopPiece * 2) + ($pieceEdgeBorder * 2));
+		height: calc(100% - ($squarePaddingToTopPiece * 2) + ($pieceEdgeBorder * 2));
+	}
+
+	.piece-topper.owned-by-o {
+		border-color: $o-color;
+	}
+	.piece-topper.owned-by-x {
+		border-color: $x-color;
+	}
+
+
+	.circle {
+		border-radius: 50%;
+		border: $pieceEdgeThickness solid;
+		left: $squarePaddingToTopPiece;
+		top: $squarePaddingToTopPiece;
+		margin-top: -$pieceEdgeThickness;
+		margin-left: -$pieceEdgeThickness;
+	}
+
+	.circle-border {
+		border-radius: 50%;
+		border: calc($pieceEdgeThickness + $pieceEdgeBorder) solid $negative-space-color;
+		left: calc($squarePaddingToTopPiece - $pieceEdgeBorder);
+		top: calc($squarePaddingToTopPiece - $pieceEdgeBorder);
+		margin-top: calc(-$pieceEdgeThickness - $pieceEdgeBorder);
+		margin-left: calc(-$pieceEdgeThickness - $pieceEdgeBorder);
+	}
+
+	.square {
+		border: $pieceEdgeThickness solid;
+		left: $squarePaddingToTopPiece;
+		top: $squarePaddingToTopPiece;
+		margin-top: -$pieceEdgeThickness;
+		margin-left: -$pieceEdgeThickness;
+	}
+	.square-border {
+		border: calc($pieceEdgeThickness + $pieceEdgeBorder) solid $negative-space-color;
+		left: calc($squarePaddingToTopPiece - $pieceEdgeBorder);
+		top: calc($squarePaddingToTopPiece - $pieceEdgeBorder);
+		margin-top: calc(-$pieceEdgeThickness - $pieceEdgeBorder);
+		margin-left: calc(-$pieceEdgeThickness - $pieceEdgeBorder);
+	}
 }
