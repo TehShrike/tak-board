@@ -43,6 +43,19 @@ SILVER #DDDDDD
 	min-height: 1px;
 }
 
+.tak-board-1 .tak-square {
+	border: 6px solid white;
+	border-radius: 5px;
+}
+
+.tak-board-1 .tak-square.owned-by-o {
+	border-color: #FF851B;
+}
+
+.tak-board-1 .tak-square.owned-by-x {
+	border-color: #001F3F;
+}
+
 .tak-board-1 .tak-row.even .tak-square.even {
 	background-color: #DDDDDD;
 }

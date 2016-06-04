@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run js && npm run css",
-    "js": "browserify index.js -t [ stringify --extensions [.html .txt] ] -t babelify -o build.js",
-    "watchjs": "watchify index.js -t [ stringify --extensions [.html .txt] ] -t babelify -d -o build.js",
+    "js": "browserify . -t [ stringify --extensions [.html .txt] ] -t babelify -o build.js",
+    "watchjs": "watchify . -t [ stringify --extensions [.html .txt] ] -t babelify -d -o build.js",
     "watchcss": "postcss -w --use precss -o build.css board-style.css",
     "css": "postcss --use precss -o build.css board-style.css"
   },
@@ -45,7 +45,7 @@
     "postcss-cli": "^2.5.2",
     "precss": "^1.4.0",
     "stringify": "5.1.0",
-    "tak-game": "0.0.0",
+    "tak-game": "0.0.1",
     "watchify": "3.7.0"
   }
 }

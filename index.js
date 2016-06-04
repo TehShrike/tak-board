@@ -9,21 +9,41 @@ const boardState = p(`
 	ox  |x   |xx  |o
 `)
 
-const ractive = new Ractive({
+const boardState2 = p(`
+	ooxoxoX | oxo   | oo     |               |     |
+	ooxo    | x     | xoxoox | oxoooxoxoxoox | o   | x
+	o       | xooxoo| oxox   | oo            |     | xxxO
+	oxooxoo^| oxox^ | xoxoo  | xxxo          | xxx^| oo
+	oxo     | oo    |        | x             | ox  | x
+	        | o^    | xoox   |               | x   | oxooxooxooxo
+
+`)
+
+function squareOwner(pieces) {
+	const length = pieces.length
+	if (length === 0) {
+		return ''
+	} else {
+		return pieces[length - 1].toLowerCase()
+	}
+}
+
+new Ractive({
 	el: '#tak-board-1',
 	template: board,
 	data: {
 		boardState,
-		squareOwner: function(pieces) {
-			const length = pieces.length
-			if (length === 0) {
-				return ''
-			} else {
-				return pieces[length - 1].toLowerCase()
-			}
-		}
+		squareOwner
 	}
 })
 
-console.log(ractive.get())
+new Ractive({
+	el: '#tak-board-1b',
+	template: board,
+	data: {
+		boardState: boardState2,
+		squareOwner
+	}
+})
+
 

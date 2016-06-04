@@ -3,7 +3,7 @@
 	{{#y:i}}
 	<div class="display-table-row tak-row {{i % 2 ? 'even' : 'odd'}}">
 		{{# .:j}}
-		<div class="display-table-cell tak-square {{topIsStanding ? 'standing' : ''}} {{j % 2 ? 'even' : 'odd'}}" style="position: relative;">
+		<div class="display-table-cell tak-square {{topIsStanding ? 'standing' : ''}} {{j % 2 ? 'even' : 'odd'}} owned-by-{{squareOwner(pieces)}}" style="position: relative;">
 			{{#topIsStanding}}
 				<div class="piece-topper-border square-border"></div>
 				<div class="piece-topper square owned-by-{{squareOwner(pieces)}}"></div>

@@ -33,6 +33,17 @@ SILVER #DDDDDD
 		min-height: 1px;
 	}
 
+	.tak-square {
+		border: 6px solid $negative-space-color;
+		border-radius: 5px;
+	}
+	.tak-square.owned-by-o {
+		border-color: $o-color;
+	}
+	.tak-square.owned-by-x {
+		border-color: $x-color;
+	}
+
 	.tak-row.even .tak-square.even {
 		background-color: #DDDDDD;
 	}
