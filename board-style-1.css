@@ -90,6 +90,8 @@ SILVER #DDDDDD
 	.tak-piece {
 		width: 100%;
 		font-size: 1px; /* WTF?!? */
+		height: 20%;
+		margin: 2px;
 	}
 
 
