@@ -28,12 +28,17 @@ function squareOwner(pieces) {
 	}
 }
 
+function atLeastClasses(pieces) {
+	return pieces.map((piece, index) => `at-least-${index + 1}`).join(' ')
+}
+
 new Ractive({
 	el: '#tak-board-1',
 	template: board,
 	data: {
 		boardState,
-		squareOwner
+		squareOwner,
+		atLeastClasses
 	}
 })
 
@@ -42,7 +47,8 @@ new Ractive({
 	template: board,
 	data: {
 		boardState: boardState2,
-		squareOwner
+		squareOwner,
+		atLeastClasses
 	}
 })
 

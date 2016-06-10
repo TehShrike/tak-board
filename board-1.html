@@ -13,17 +13,15 @@
 				<div class="piece-topper circle owned-by-{{squareOwner(pieces)}}"></div>
 			{{/}}
 
-			<div class="width-height-100 display-table">
-				<div class="square-empty-space"></div>
-				<div class="display-table-footer-group square-pieces">
-					{{#pieces.slice().reverse():stackPosition}}
-					{{# {piece:.} }}
-					<div class="tak-piece owned-by-{{piece.toLowerCase()}}">
-						&nbsp;
-					</div>
-					{{/}}
-					{{/}}
+			<div class="width-height-100 display-table row-count-{{pieces.length}} {{atLeastClasses(pieces)}}">
+				<div class="square-spacer">&nbsp;</div>
+				{{#pieces.slice().reverse():stackPosition}}
+				{{# {piece:.} }}
+				<div class="tak-piece owned-by-{{piece.toLowerCase()}}">
+					&nbsp;
 				</div>
+				{{/}}
+				{{/}}
 			</div>
 		</div>
 		{{/}}
