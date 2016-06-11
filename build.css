@@ -72,7 +72,7 @@ SILVER #DDDDDD
 	height: 100%;
 }
 
-.tak-board-1 .row-count-1 .row, .tak-board-1 .row-count-2 .row, .tak-board-1 .row-count-3 .row, .tak-board-1 .row-count-4 .row, .tak-board-1 .row-count-5 .row {
+.tak-board-1 .row-count-1 .tak-piece, .tak-board-1 .row-count-2 .tak-piece, .tak-board-1 .row-count-3 .tak-piece, .tak-board-1 .row-count-4 .tak-piece, .tak-board-1 .row-count-5 .tak-piece {
 	height: 20%;
 }
 
@@ -118,8 +118,8 @@ SILVER #DDDDDD
 	font-size: 1px;
 
 	/* WTF?!? */
-	height: 20%;
-	margin: 2px;
+
+	/* margin: 2px; */
 }
 
 /* square sizes */

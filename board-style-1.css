@@ -61,7 +61,7 @@ SILVER #DDDDDD
 	.row-count-4,
 	.row-count-5 {
 		height: 100%;
-		.row {
+		.tak-piece {
 			height: 20%;
 		}
 	}
@@ -90,8 +90,7 @@ SILVER #DDDDDD
 	.tak-piece {
 		width: 100%;
 		font-size: 1px; /* WTF?!? */
-		height: 20%;
-		margin: 2px;
+		/* margin: 2px; */
 	}
 
 
