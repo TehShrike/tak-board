@@ -124,6 +124,13 @@ SILVER #DDDDDD
 		width: calc(100% - ($squarePaddingToTopPiece * 2));
 		height: calc(100% - ($squarePaddingToTopPiece * 2));
 	}
+	.transparent {
+		background-color: $negative-space-color;
+		opacity: 0.7;
+	}
+	.circle .transparent {
+		border-radius: 50%;
+	}
 	.piece-topper-border {
 		position: absolute;
 		width: calc(100% - ($squarePaddingToTopPiece * 2) + ($pieceEdgeBorder * 2));
