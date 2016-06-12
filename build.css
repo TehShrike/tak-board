@@ -68,57 +68,28 @@ SILVER #DDDDDD
 	background-color: #001F3F;
 }
 
-.tak-board-1 .row-count-1, .tak-board-1 .row-count-2, .tak-board-1 .row-count-3, .tak-board-1 .row-count-4, .tak-board-1 .row-count-5 {
-	height: 100%;
-}
-
 .tak-board-1 .row-count-1 .tak-piece, .tak-board-1 .row-count-2 .tak-piece, .tak-board-1 .row-count-3 .tak-piece, .tak-board-1 .row-count-4 .tak-piece, .tak-board-1 .row-count-5 .tak-piece {
 	height: 20%;
 }
 
-.tak-board-1 .row-count-1 .square-spacer {
-	height: 80%;
-}
-
-.tak-board-1 .row-count-2 .square-spacer {
-	height: 60%;
-}
-
-.tak-board-1 .row-count-3 .square-spacer {
-	height: 40%;
-}
-
-.tak-board-1 .row-count-4 .square-spacer {
-	height: 20%;
-}
-
-.tak-board-1 .at-least-5 .square-spacer {
-	display: none;
-}
-
-.tak-board-1 .at-least-6 {
-	display: table;
-	height: 100%;
-}
-
 .tak-board-1 .at-least-6 .tak-piece {
-	display: table-row;
-}
-
-.tak-board-1 .at-least-6 .tak-piece:before {
-	content: " ";
-	display: table-cell;
-	width: 100%;
+	flex-grow: 1;
 }
 
 /* piece sizes */
 
 .tak-board-1 .tak-piece {
-	width: 100%;
-	font-size: 1px;
+	border-top: 1px;
+	border-bottom: 1px;
+	border-left: 2px;
+	border-right: 2px;
+	border-style: solid;
+	border-color: white;
+}
 
-	/* WTF?!? */
-	margin: 2px;
+.tak-board-1 .piece-holder {
+	display: flex;
+	flex-direction: column-reverse;
 }
 
 /* square sizes */
