@@ -7,9 +7,6 @@
 .display-table-cell {
 	display: table-cell;
 }
-.display-table-footer-group {
-	display: table-footer-group;
-}
 
 .width-height-100 {
 	width: 100%;
@@ -50,6 +47,14 @@ SILVER #DDDDDD
 
 .tak-board-1 .tak-square.owned-by-x {
 	border-color: #001F3F;
+}
+
+.tak-board-1 .tak-square.highlight {
+	border-color: #F012BE;
+}
+
+.tak-board-1 .tak-square.can-click {
+	cursor: pointer;
 }
 
 .tak-board-1 .tak-row.even .tak-square.even {
@@ -94,32 +99,32 @@ SILVER #DDDDDD
 
 /* square sizes */
 
-.tak-board-1 .tak-board.size-8 .tak-square {
+.tak-board-1 .size-8 .tak-square {
 	width: 12.5%;
 	height: 12.5%;
 }
 
-.tak-board-1 .tak-board.size-7 .tak-square {
+.tak-board-1 .size-7 .tak-square {
 	width: 14.285714286%;
 	height: 14.285714286%;
 }
 
-.tak-board-1 .tak-board.size-6 .tak-square {
+.tak-board-1 .size-6 .tak-square {
 	width: 16.666666667%;
 	height: 16.666666667%;
 }
 
-.tak-board-1 .tak-board.size-5 .tak-square {
+.tak-board-1 .size-5 .tak-square {
 	width: 20%;
 	height: 20%;
 }
 
-.tak-board-1 .tak-board.size-4 .tak-square {
+.tak-board-1 .size-4 .tak-square {
 	width: 25%;
 	height: 25%;
 }
 
-.tak-board-1 .tak-board.size-3 .tak-square {
+.tak-board-1 .size-3 .tak-square {
 	width: 33.333333333%;
 	height: 33.333333333%;
 }

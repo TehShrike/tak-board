@@ -1,6 +1,5 @@
-const Ractive = require('ractive')
-const board = require('./board-1.html')
 const p = require('tak-game/parse-position')
+const createBoard = require('./create-board')
 
 const boardState = p(`
 	oxo |oo  |xox^|
@@ -19,37 +18,28 @@ const boardState2 = p(`
 
 `)
 
-function squareOwner(pieces) {
-	const length = pieces.length
-	if (length === 0) {
-		return ''
-	} else {
-		return pieces[length - 1].toLowerCase()
-	}
+const highlight = {
+	'1-3': true,
+	'2-3': true
 }
 
-function atLeastClasses(pieces) {
-	return pieces.map((piece, index) => `at-least-${index + 1}`).join(' ')
+const canClick = {
+	'2-3': true
 }
 
-new Ractive({
+const r = createBoard({
 	el: '#tak-board-1',
-	template: board,
-	data: {
-		boardState,
-		squareOwner,
-		atLeastClasses
-	}
+	highlight,
+	boardState,
+	canClick
 })
 
-new Ractive({
+r.on('click', ({x, y}) => console.log('CLICK', x, y))
+r.on('hover', ({x, y}) => console.log('HOVER', x, y))
+
+createBoard({
 	el: '#tak-board-1b',
-	template: board,
-	data: {
-		boardState: boardState2,
-		squareOwner,
-		atLeastClasses
-	}
+	highlight,
+	boardState: boardState2,
+	canClick
 })
-
-

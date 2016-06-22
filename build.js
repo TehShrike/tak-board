@@ -1,7 +1,91 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports = "{{#boardState}}\n<div class=\"display-table tak-board width-height-100 size-{{size}}\">\n\t{{#y:i}}\n\t<div class=\"display-table-row tak-row {{i % 2 ? 'even' : 'odd'}}\">\n\t\t{{# .:j}}\n\t\t<div class=\"display-table-cell tak-square {{topIsStanding ? 'standing' : ''}} {{j % 2 ? 'even' : 'odd'}} owned-by-{{squareOwner(pieces)}}\" style=\"position: relative;\">\n\t\t\t{{#topIsStanding}}\n\t\t\t\t<div class=\"piece-topper-border square-border\"></div>\n\t\t\t\t<div class=\"piece-topper square owned-by-{{squareOwner(pieces)}}\"><div class=\"transparent width-height-100\"></div></div>\n\t\t\t{{/}}\n\t\t\t{{#pieces.length > 0 && squareOwner(pieces).toUpperCase() === pieces[pieces.length - 1]}}\n\t\t\t\t<div class=\"piece-topper-border circle-border\"></div>\n\t\t\t\t<div class=\"piece-topper circle owned-by-{{squareOwner(pieces)}}\"><div class=\"transparent width-height-100\"></div></div>\n\t\t\t{{/}}\n\n\t\t\t<div class=\"width-height-100 piece-holder row-count-{{pieces.length}} {{atLeastClasses(pieces)}}\">\n\t\t\t\t{{#pieces.slice():stackPosition}}\n\t\t\t\t{{# {piece:.} }}\n\t\t\t\t<div class=\"tak-piece owned-by-{{piece.toLowerCase()}}\">\n\t\t\t\t</div>\n\t\t\t\t{{/}}\n\t\t\t\t{{/}}\n\t\t\t</div>\n\t\t</div>\n\t\t{{/}}\n\t</div>\n\t{{/}}\n</div>\n{{/}}\n";
+module.exports = "{{#boardState}}\n<div class=\"display-table tak-board-1 width-height-100 size-{{size}}\">\n\t{{#y:y}}\n\t<div class=\"display-table-row tak-row {{y % 2 ? 'even' : 'odd'}}\">\n\t\t{{# .:x}}\n\t\t<div class=\"display-table-cell\n\t\ttak-square\n\t\t{{topIsStanding ? 'standing' : ''}}\n\t\t{{x % 2 ? 'even' : 'odd'}}\n\t\towned-by-{{squareOwner(pieces)}}\n\t\tx-{{x}}\n\t\ty-{{y}}\n\t\t{{highlight[x + '-' + y] ? 'highlight' : ''}}\n\t\t{{canClick[x + '-' + y] ? 'can-click' : ''}}\"\n\t\tstyle=\"position: relative;\"\n\t\ton-click=\"fire(canClick[x + '-' + y] ? 'click' : null, { x: x, y: y })\"\n\t\ton-mouseover=\"fire('hover', { x: x, y: y })\">\n\t\t\t{{#topIsStanding}}\n\t\t\t\t<div class=\"piece-topper-border square-border\"></div>\n\t\t\t\t<div class=\"piece-topper square owned-by-{{squareOwner(pieces)}}\"><div class=\"transparent width-height-100\"></div></div>\n\t\t\t{{/}}\n\t\t\t{{#pieces.length > 0 && squareOwner(pieces).toUpperCase() === pieces[pieces.length - 1]}}\n\t\t\t\t<div class=\"piece-topper-border circle-border\"></div>\n\t\t\t\t<div class=\"piece-topper circle owned-by-{{squareOwner(pieces)}}\"><div class=\"transparent width-height-100\"></div></div>\n\t\t\t{{/}}\n\n\t\t\t<div class=\"width-height-100 piece-holder row-count-{{pieces.length}} {{atLeastClasses(pieces)}}\">\n\t\t\t\t{{#pieces.slice():stackPosition}}\n\t\t\t\t{{# {piece:.} }}\n\t\t\t\t<div class=\"tak-piece owned-by-{{piece.toLowerCase()}}\">\n\t\t\t\t</div>\n\t\t\t\t{{/}}\n\t\t\t\t{{/}}\n\t\t\t</div>\n\t\t</div>\n\t\t{{/}}\n\t</div>\n\t{{/}}\n</div>\n{{/}}\n";
 
 },{}],2:[function(require,module,exports){
+'use strict';
+
+var Ractive = require('ractive');
+var board = require('./board-1.html');
+
+module.exports = function createBoard(_ref) {
+	var el = _ref.el;
+	var boardState = _ref.boardState;
+	var highlight = _ref.highlight;
+	var canClick = _ref.canClick;
+
+	return new Ractive({
+		el: el,
+		template: board,
+		data: {
+			boardState: boardState,
+			highlight: highlight || {},
+			canClick: canClick || {},
+			squareOwner: squareOwner,
+			atLeastClasses: atLeastClasses
+		}
+	});
+};
+
+function squareOwner(pieces) {
+	var length = pieces.length;
+	if (length === 0) {
+		return '';
+	} else {
+		return pieces[length - 1].toLowerCase();
+	}
+}
+
+function atLeastClasses(pieces) {
+	return pieces.map(function (piece, index) {
+		return 'at-least-' + (index + 1);
+	}).join(' ');
+}
+
+},{"./board-1.html":1,"ractive":4}],3:[function(require,module,exports){
+'use strict';
+
+var p = require('tak-game/parse-position');
+var createBoard = require('./create-board');
+
+var boardState = p('\n\toxo |oo  |xox^|\n\toO  |    |xxxx|oooo^\n\t    |xo  |O   |xox\n\tox  |x   |xx  |o\n');
+
+var boardState2 = p('\n\tooxoxoX | oxo   | oo     |               |     |\n\tooxo    | x     | xoxoox | oxoooxoxoxoox | o   | x\n\to       | xooxoo| oxox   | oo            |     | xxxO\n\toxooxoo^| oxox^ | xoxoo  | xxxo          | xxx^| oo\n\toxo     | oo    |        | x             | ox  | x\n\t        | o^    | xoox   |               | x   | oxooxooxooxo\n\n');
+
+var highlight = {
+	'1-3': true,
+	'2-3': true
+};
+
+var canClick = {
+	'2-3': true
+};
+
+var r = createBoard({
+	el: '#tak-board-1',
+	highlight: highlight,
+	boardState: boardState,
+	canClick: canClick
+});
+
+r.on('click', function (_ref) {
+	var x = _ref.x;
+	var y = _ref.y;
+	return console.log('CLICK', x, y);
+});
+r.on('hover', function (_ref2) {
+	var x = _ref2.x;
+	var y = _ref2.y;
+	return console.log('HOVER', x, y);
+});
+
+createBoard({
+	el: '#tak-board-1b',
+	highlight: highlight,
+	boardState: boardState2,
+	canClick: canClick
+});
+
+},{"./create-board":2,"tak-game/parse-position":5}],4:[function(require,module,exports){
 /*
 	Ractive.js v0.7.3
 	Sat Apr 25 2015 13:52:38 GMT-0400 (EDT) - commit da40f81c660ba2f09c45a09a9c20fdd34ee36d80
@@ -16622,7 +16706,7 @@ module.exports = "{{#boardState}}\n<div class=\"display-table tak-board width-he
 }));
 
 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 var validPiece = require('./valid-piece');
@@ -16712,7 +16796,7 @@ module.exports = function parsePosition(positionString) {
 
 module.exports.pieces = setPieceCounts;
 
-},{"./valid-piece":4}],4:[function(require,module,exports){
+},{"./valid-piece":6}],6:[function(require,module,exports){
 "use strict";
 
 module.exports = function validPiece(piece) {
@@ -16720,50 +16804,4 @@ module.exports = function validPiece(piece) {
 	);
 };
 
-},{}],5:[function(require,module,exports){
-'use strict';
-
-var Ractive = require('ractive');
-var board = require('./board-1.html');
-var p = require('tak-game/parse-position');
-
-var boardState = p('\n\toxo |oo  |xox^|\n\toO  |    |xxxx|oooo^\n\t    |xo  |O   |xox\n\tox  |x   |xx  |o\n');
-
-var boardState2 = p('\n\tooxoxoX | oxo   | oo     |               |     |\n\tooxo    | x     | xoxoox | oxoooxoxoxoox | o   | x\n\to       | xooxoo| oxox   | oo            |     | xxxO\n\toxooxoo^| oxox^ | xoxoo  | xxxo          | xxx^| oo\n\toxo     | oo    |        | x             | ox  | x\n\t        | o^    | xoox   |               | x   | oxooxooxooxo\n\n');
-
-function squareOwner(pieces) {
-	var length = pieces.length;
-	if (length === 0) {
-		return '';
-	} else {
-		return pieces[length - 1].toLowerCase();
-	}
-}
-
-function atLeastClasses(pieces) {
-	return pieces.map(function (piece, index) {
-		return 'at-least-' + (index + 1);
-	}).join(' ');
-}
-
-new Ractive({
-	el: '#tak-board-1',
-	template: board,
-	data: {
-		boardState: boardState,
-		squareOwner: squareOwner,
-		atLeastClasses: atLeastClasses
-	}
-});
-
-new Ractive({
-	el: '#tak-board-1b',
-	template: board,
-	data: {
-		boardState: boardState2,
-		squareOwner: squareOwner,
-		atLeastClasses: atLeastClasses
-	}
-});
-
-},{"./board-1.html":1,"ractive":2,"tak-game/parse-position":3}]},{},[5]);
+},{}]},{},[3]);

@@ -2,12 +2,12 @@
   "name": "tak-board",
   "version": "0.0.0",
   "description": "A 2D representation of a Tak board in HTML and CSS",
-  "main": "index.js",
+  "main": "create-board.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run js && npm run css",
-    "js": "browserify . -t [ stringify --extensions [.html .txt] ] -t babelify -o build.js",
-    "watchjs": "watchify . -t [ stringify --extensions [.html .txt] ] -t babelify -d -o build.js",
+    "js": "browserify demo.js -t [ stringify --extensions [.html .txt] ] -t babelify -o build.js",
+    "watchjs": "watchify demo.js -t [ stringify --extensions [.html .txt] ] -t babelify -d -o build.js",
     "watchcss": "postcss -w --use precss -o build.css board-style.css",
     "css": "postcss --use precss -o build.css board-style.css"
   },
@@ -24,7 +24,7 @@
     "url": "https://github.com/TehShrike/tak-board/issues"
   },
   "homepage": "https://github.com/TehShrike/tak-board#readme",
-  "browser": "index.js",
+  "browser": "create-board.js",
   "browserify": {
     "transform": [
       [
